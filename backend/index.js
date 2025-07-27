@@ -1,0 +1,25 @@
+const express=require('express')
+const colors=require('colors')
+const dotenv=require('dotenv')
+const connectDB=require('./config/db')
+const authRouters=require('./routes/authRoutes')
+const categoryRoutes=require('./routes/CategoryRoutes')
+const productRoutes=require('./routes/productRoutes')
+const cors=require('cors')
+const app=express()
+// const authRouter=require('./routes/authRoutes')
+const authRoutes = require('./routes/authRoutes');
+app.use(cors())
+app.use(express.json())
+app.use("/auth",authRoutes)
+app.use("/category",categoryRoutes)
+app.use("/product",productRoutes)
+dotenv.config()
+connectDB()
+app.get("/",(req,res)=>{
+    res.send("<h1>Welcome to online shopping</h1>")
+})
+let PORT=process.env.PORT
+app.listen(PORT,()=>{
+    console.log(`server Sccessfully running on ${PORT}`.bgMagenta)
+})

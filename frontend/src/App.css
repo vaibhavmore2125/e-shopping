@@ -1,0 +1,11 @@
+.navbar a
+{
+  text-decoration: none;
+  color: white !important;
+  font-size: 10px;
+  margin-right: 15px;
+}
+.product-link
+{
+  text-decoration: none;
+}
